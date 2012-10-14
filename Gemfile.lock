@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: 2a7c21d40692b512c02deb730fe8caefe1e474da
+  specs:
+    bootstrap-sass (2.1.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,7 +36,6 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.0)
     builder (3.0.3)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -132,7 +137,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass!
   coffee-rails (~> 3.2.1)
   devise
   factory_girl_rails
