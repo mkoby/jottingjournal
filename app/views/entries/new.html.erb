@@ -1,2 +1,6 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+<div>
+  <%= form_for @entry, :class => "form-horizontal" do |f| %>
+    <%= f.text_area :contents %><br/>
+    <%= f.submit "Save", :class => "btn btn-inverse" %>
+  <% end %>
+</div>

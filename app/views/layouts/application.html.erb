@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar">
       <div class="navbar-inner">
         <%= link_to 'Jot Journal', root_path, :class => "brand" %>
@@ -22,12 +22,11 @@
       </div>
     </div>
 
-    <p>
-    <% flash.each do |key, msg| %>
-      <%= display_flash(key, msg) %>
-    <% end %>
-    </p>
-
+    <div id="messages">
+      <% flash.each do |key, msg| %>
+        <%= display_flash(key, msg) %>
+      <% end %>
+    </div>
     <%= yield %>
 
   </div>
