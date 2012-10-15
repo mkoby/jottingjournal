@@ -22,7 +22,7 @@
 
     <p>
     <% flash.each do |key, msg| %>
-      <%= content_tag :div, msg, :id => key %>
+      <%= display_flash(key, msg) %>
     <% end %>
     </p>
 
