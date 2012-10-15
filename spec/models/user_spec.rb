@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "entries" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    context "zero entries" do
+      it{ should respond_to(:entries) }
+      its(:entries){ should be_empty }
+    end
+  end
 end

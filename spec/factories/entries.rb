@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :entry do
-    user nil
-    contents "MyText"
-    entry_hash ""
+    association :user
+    contents "This is is a new journal entry"
   end
 end
