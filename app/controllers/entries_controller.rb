@@ -1,5 +1,11 @@
 class EntriesController < ApplicationController
+  layout "entries"
   before_filter :authenticate_user!
+  before_filter :get_entries, :only => [:index, :new, :show, :edit]
+  before_filter :get_entry, :only => [:show, :edit, :update, :destroy]
+
+  def index
+  end
 
   def new
     @entry ||= current_user.entries.new
@@ -24,8 +30,24 @@ class EntriesController < ApplicationController
   end
 
   def update
+    if @entry.update_attributes(params[:entry])
+      flash[:notice] = "Entry updated."
+      redirect_to entry_path(@entry)
+    end
   end
 
   def destroy
+    @entry.destroy
+    redirect_to root_path
+  end
+
+  private
+
+  def get_entries
+    @entries = current_user.entries.reverse
+  end
+
+  def get_entry
+    @entry = Entry.find(params[:id])
   end
 end

@@ -1,2 +1,2 @@
-<h1>Entries#show</h1>
-<p>Find me in app/views/entries/show.html.erb</p>
+<h2><%= @entry.created_at.strftime("%B %d, %Y %I:%M%p") %></h2>
+<p><%= simple_format h @entry.contents %></p>

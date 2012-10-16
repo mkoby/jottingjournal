@@ -1,0 +1,12 @@
+<div>
+  <h2><%= link_to entry.created_at.strftime("%B %d, %Y %I:%M%p"), entry_path(entry) %></h2>
+  <p><%= simple_format h entry.shorten_contents %></p>
+  <p>
+    <div class="btn-toolbar pull-right">
+      <div class="btn-group">
+        <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(entry), :class => "btn" %>
+        <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn" %>
+      </div>
+    </div>
+  </p>
+</div>

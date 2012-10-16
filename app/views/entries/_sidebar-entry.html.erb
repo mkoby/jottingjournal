@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <strong><%= link_to old_entry.created_at.strftime("%b %e, %Y %l:%M %p"), old_entry, :class => "muted" %></strong>
+  </td>
+  <td>
+    <p><small><%= "#{old_entry.contents[0..100]}#{'...' if old_entry.contents.length > 100}" %></small></p>
+  </td>
+<tr>

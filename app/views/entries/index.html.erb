@@ -1,0 +1,6 @@
+<div>
+  <% @entries.each do |entry| %>
+    <%= render :partial => 'index_entry', :locals => { :entry => entry } %>
+    <hr>
+  <% end %>
+</div>
