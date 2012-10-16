@@ -1,6 +1,5 @@
-<div>
-  <%= form_for @entry, :class => "form-horizontal" do |f| %>
-    <%= f.text_area :contents %><br/>
-    <%= f.submit "Save", :class => "btn btn-inverse" %>
-  <% end %>
+<div class="row8 offset2">
+  <h2>New Entry</h2>
+  <h5>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></h5>
+  <%= render :partial => 'form' %>
 </div>
