@@ -3,3 +3,9 @@
   <h5>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></h5>
   <%= render :partial => 'form' %>
 </div>
+
+<%- unless @lat_long %>
+  <script>
+    get_location();
+  </script>
+<% end %>
