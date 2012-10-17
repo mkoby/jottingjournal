@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'devise'
-gem 'heroku'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
