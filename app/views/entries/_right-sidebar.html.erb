@@ -1,9 +1,13 @@
 <div class="container-fluid span12">
-  <div class="row-fluid">
-    <%= link_to content_tag(:i, '', :class => "icon-plus icon-white") + ' New', new_entry_path, :class => "btn btn-inverse" %><br/>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <%= link_to content_tag(:i, '', :class => "icon-home"), root_path, :class => "btn", :title => "Home" %>
+      <%= link_to content_tag(:i, '', :class => "icon-plus"), new_entry_path, :class => "btn", :title => "New Entry" %>
+    </div>
   </div>
   <% if @entries %>
     <div class="row-fluid">
+      <h3>Older Entries</h3>
       <table class="table-striped">
         <% @entries.each do |e| %>
           <%= render(:partial => 'sidebar-entry', :locals => { :old_entry => e }) if e.created_at %>
