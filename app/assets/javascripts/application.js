@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+
+function get_location() {
+  navigator.geolocation.getCurrentPosition(acquired_location, handle_error);
+}
+
+function acquired_location(position) {
+  $('#latitude').val(position.coords.latitude);
+  $('#longitude').val(position.coords.longitude);
+}
+
+function handle_error(err) {}
+
+
