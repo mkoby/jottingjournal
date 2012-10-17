@@ -1,4 +1,6 @@
 <%= form_for @entry do |f| %>
   <%= f.text_area :contents, :class => "span8" %><br/>
+  <%= hidden_field_tag :latitude %>
+  <%= hidden_field_tag :longitude %>
   <%= f.submit "Save", :class => "btn btn-inverse" %>
 <% end %>
