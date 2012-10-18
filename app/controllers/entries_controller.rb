@@ -13,6 +13,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = current_user.entries.new(params[:entry])
+    @entry.location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
 
     if @entry.save
       flash[:notice] = "Entry saved"
