@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   layout "entries"
   before_filter :authenticate_user!
   before_filter :get_entries, :only => [:index, :new, :show, :edit]
-  before_filter :get_entry, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_entry, :only => [:show, :edit, :update, :destroy, :favorite]
 
   def index
   end
@@ -40,6 +40,16 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     redirect_to root_path
+  end
+
+  def favorite
+    @entry.is_favorite = @entry.is_favorite? ? false : true
+
+    if @entry.save
+      return true
+    else
+      return false
+    end
   end
 
   private

@@ -12,12 +12,14 @@ handle_error = (err) ->
   $("#attach_location").hide()
 
 this.handle_favorite = ->
-  console.log "Clicked fav"
+  $.ajax '/entries/' + $('#entry').attr('entry-id') + '/favorite',
+    type: 'GET',
+    data: { id: $('#entry').attr('entry-id') },
+    success: success_favorite
+success_favorite = ->
   fav_icon = $("#favorite_icon")
   if fav_icon.hasClass('icon-star-empty')
-    console.log "remove empty, replace with full"
     fav_icon.removeClass('icon-star-empty').addClass('icon-star')
   else
-    console.log "remove full, replace with empty"
     fav_icon.removeClass('icon-star').addClass('icon-star-empty')
-  e.preventDefault()
+  return false

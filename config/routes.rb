@@ -8,6 +8,7 @@ Jotjournal::Application.routes.draw do
   get "home/index"
 
   resources :entries
+  match 'entries/:id/favorite' => 'entries#favorite'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
