@@ -20,4 +20,4 @@ this.handle_favorite = ->
   else
     console.log "remove full, replace with empty"
     fav_icon.removeClass('icon-star').addClass('icon-star-empty')
-  return false;
+  e.preventDefault()
