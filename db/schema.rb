@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017204315) do
+ActiveRecord::Schema.define(:version => 20121018155055) do
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
     t.text     "contents"
     t.binary   "entry_hash"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "is_favorite"
   end
 
+  add_index "entries", ["is_favorite"], :name => "index_entries_on_is_favorite"
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "entry_locations", :force => true do |t|
