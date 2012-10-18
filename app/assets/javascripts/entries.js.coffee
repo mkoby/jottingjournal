@@ -10,3 +10,14 @@ acquired_location = (position) ->
 handle_error = (err) ->
   $("#location_checkbox").val "0"
   $("#attach_location").hide()
+
+this.handle_favorite = ->
+  console.log "Clicked fav"
+  fav_icon = $("#favorite_icon")
+  if fav_icon.hasClass('icon-star-empty')
+    console.log "remove empty, replace with full"
+    fav_icon.removeClass('icon-star-empty').addClass('icon-star')
+  else
+    console.log "remove full, replace with empty"
+    fav_icon.removeClass('icon-star').addClass('icon-star-empty')
+  return false;
