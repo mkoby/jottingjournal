@@ -3,7 +3,7 @@
 <div  class="btn-toolbar pull-right">
   <div class="btn-group">
     <% if @entry.location %>
-      <%= link_to "#{@entry.location.city}, #{@entry.location.state}", "https://maps.google.com/?q=#{@entry.location.city},#{@entry.location.state}", :class => "btn" %>
+      <%= link_to "#{@entry.location.city}, #{@entry.location.state}", "https://maps.google.com/?q=#{@entry.location.city},#{@entry.location.state}%20#{@entry.location.zipcode}", :class => "btn" %>
     <% end %>
     <%= link_to_unless(@entry.is_favorite?, content_tag(:i, '', :class => "icon-star-empty", :id => "favorite_icon"), '#', :onclick => 'handle_favorite()', :class => "btn", :title => "Favorite", :id => "favorite", :remote => true) do |name|
       link_to(content_tag(:i, '', :class => "icon-star", :id => "favorite_icon"), '#', :onclick => 'handle_favorite()', :class => "btn", :title => "Unfavorite", :id => "favorite", :remote => true)

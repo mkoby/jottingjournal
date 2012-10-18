@@ -7,6 +7,7 @@ class EntryLocation < ActiveRecord::Base
     if geo = results.first
       obj.city = geo.city
       obj.state = geo.state_code
+      obj.zipcode = geo.postal_code
     end
   end
 

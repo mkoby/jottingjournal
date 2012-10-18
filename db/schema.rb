@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018155055) do
+ActiveRecord::Schema.define(:version => 20121018181511) do
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20121018155055) do
     t.string   "state"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "zipcode"
   end
 
   add_index "entry_locations", ["entry_id"], :name => "index_entry_locations_on_entry_id"
