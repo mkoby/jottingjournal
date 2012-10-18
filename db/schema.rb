@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20121018155055) do
     t.integer  "user_id"
     t.text     "contents"
     t.binary   "entry_hash"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.boolean  "is_favorite"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "is_favorite", :default => false
   end
 
   add_index "entries", ["is_favorite"], :name => "index_entries_on_is_favorite"
