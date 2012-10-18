@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = current_user.entries.new(params[:entry])
-    @entry.location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
+    attach_location
 
     if @entry.save
       flash[:notice] = "Entry saved"
@@ -50,5 +50,13 @@ class EntriesController < ApplicationController
 
   def get_entry
     @entry = Entry.find(params[:id])
+  end
+
+  def attach_location
+    attach_location = params[:attach_location?].to_i
+
+    if attach_location && attach_location == 1
+      @entry.location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
+    end
   end
 end

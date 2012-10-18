@@ -1,5 +1,10 @@
 <%= form_for @entry do |f| %>
-  <%= f.text_area :contents, :class => "span8" %><br/>
+  <p><%= f.text_area :contents, :class => "span8" %></p>
+  <p>
+    <span>
+      <%= label_tag nil, check_box_tag(:attach_location?, '1', true) + 'Attach Location?', :class => 'checkbox' %>
+    </span>
+  </p>
   <%= hidden_field_tag :latitude %>
   <%= hidden_field_tag :longitude %>
   <%= f.submit "Save", :class => "btn btn-inverse" %>
