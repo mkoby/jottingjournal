@@ -4,6 +4,9 @@
   <p>
   <div class="btn-toolbar pull-right">
     <div class="btn-group">
+      <% if entry.location %>
+        <%= link_to "#{entry.location.city}, #{entry.location.state}", "https://maps.google.com/?q=#{entry.location.city},#{entry.location.state}", :class => "btn" %>
+      <% end %>
       <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(entry), :class => "btn", :title => "Edit" %>
       <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete" %>
     </div>

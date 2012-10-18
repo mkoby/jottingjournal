@@ -8,10 +8,12 @@
   <% if @entries %>
     <div class="row-fluid" id="sidebar-entries">
       <h3>Older Entries</h3>
-      <table class="table-striped">
-        <% @entries.each do |e| %>
-          <%= render(:partial => 'sidebar-entry', :locals => { :old_entry => e }) if e.created_at %>
-        <% end %>
+      <table class="table table-striped">
+        <tbody>
+          <% @entries.each do |e| %>
+            <%= render(:partial => 'sidebar-entry', :locals => { :old_entry => e }) if e.created_at %>
+          <% end %>
+        </tbody>
       </table>
     </div>
   <% end %>
