@@ -5,6 +5,8 @@ class Entry < ActiveRecord::Base
 
   before_save :hash_entry
 
+  scope :favorites, :conditions => { :is_favorite => true }
+
   def shorten_contents(count = 512)
     if contents.length >= count 
       shortened = contents[0, count]
@@ -19,7 +21,7 @@ class Entry < ActiveRecord::Base
   private
 
   def hash_entry
-    self.entry_hash = Digest::SHA1.hexdigest(self.contents + Time.now.to_s)
+    self.entry_hash = Digest::SHA1.hexdigest(self.contents)
   end
 
 end
