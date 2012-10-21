@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
   has_one :location, :class_name => "EntryLocation", :dependent => :destroy
+  has_many :photos, :class_name => "EntryPhoto", :dependent => :destroy
   attr_accessible :contents
 
   before_save :hash_entry
