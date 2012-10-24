@@ -9,6 +9,7 @@ class EntriesController < ApplicationController
 
   def new
     @entry ||= current_user.entries.new
+    @entry.build_entry_photo
   end
 
   def create
@@ -66,7 +67,7 @@ class EntriesController < ApplicationController
     attach_location = params[:attach_location?].to_i
 
     if attach_location && attach_location == 1
-      @entry.location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
+      @entry.entry_location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
     end
   end
 end

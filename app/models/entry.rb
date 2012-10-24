@@ -1,12 +1,21 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
-  has_one :location, :class_name => "EntryLocation", :dependent => :destroy
-  has_many :photos, :class_name => "EntryPhoto", :dependent => :destroy
-  attr_accessible :contents
+  has_one :entry_location, :dependent => :destroy
+  has_one :entry_photo, :dependent => :destroy
+  attr_accessible :contents, :location, :photo, :entry_photo_attributes
 
   before_save :hash_entry
 
   scope :favorites, :conditions => { :is_favorite => true }
+  accepts_nested_attributes_for :entry_photo
+
+  def location
+    self.entry_location
+  end
+
+  def photo
+    self.entry_photo
+  end
 
   def shorten_contents(count = 512)
     if contents.length >= count 
