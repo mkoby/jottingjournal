@@ -19,7 +19,7 @@ class Entry < ActiveRecord::Base
   end
 
   def has_photo?
-    self.entry_photo.nil? ? false : true
+    self.entry_photo.nil? || self.entry_photo.new_record? ? false : true
   end
 
   def shorten_contents(count = 512)
