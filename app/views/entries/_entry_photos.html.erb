@@ -1,6 +1,7 @@
-<% unless @entry.entry_photo.new_record? %>
-  <%= link_to image_tag(@entry.photo.photo.thumb260.url, :class => "img-polaroid"), 
-    @entry.photo.photo.url, 
+<% if @entry.has_photo? %>
+  <h3>Entry Photos</h3>
+  <%= link_to image_tag(@entry.photo.thumb260.url, :class => "img-polaroid"), 
+    @entry.photo.url, 
     :class => "pull-right", 
     :style=> "padding-left: 5px; padding-bottom: 5px;" %>
 <% end %>

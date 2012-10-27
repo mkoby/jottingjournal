@@ -2,7 +2,7 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_one :entry_location, :dependent => :destroy
   has_one :entry_photo, :dependent => :destroy
-  attr_accessible :contents, :location, :photo, :entry_photo_attributes
+  attr_accessible :contents, :entry_photo_attributes, :location, :photo
 
   before_save :hash_entry
 
@@ -14,7 +14,12 @@ class Entry < ActiveRecord::Base
   end
 
   def photo
-    self.entry_photo
+    return self.entry_photo.photo if self.has_photo?
+    return nil
+  end
+
+  def has_photo?
+    self.entry_photo.nil? ? false : true
   end
 
   def shorten_contents(count = 512)
