@@ -1,12 +1,8 @@
 <div id="entry" entry-id="<%= @entry.id %>">
   <div>
-    <div>
-      <h2><%= @entry.created_at.strftime("%B %d, %Y %I:%M%p") %></h2>
-    </div>
+    <h2><%= @entry.created_at.strftime("%B %d, %Y %I:%M%p") %></h2>
   </div>
   <div>
-    <div>
-      <%= simple_format h(@entry.contents), { :id => "entry-text" } %>
-    </div>
+    <%= simple_format h(@entry.contents), { :id => "entry-text" } %>
   </div>
 </div>
