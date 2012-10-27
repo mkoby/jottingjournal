@@ -1,0 +1,4 @@
+<% @favorites.each do |favorite| %>
+  <%= render(:partial => 'sidebar-entry', :locals => { :entry => favorite }) if favorite.created_at %>
+<% end %>
+

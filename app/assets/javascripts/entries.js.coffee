@@ -23,3 +23,12 @@ success_favorite = ->
   else
     fav_icon.removeClass('icon-star').addClass('icon-star-empty')
   return false
+
+this.load_favorites = ->
+  $.ajax '/entries/get_favorites',
+    type: 'GET',
+    data: null,
+    success: success_load_favorites
+success_load_favorites = (data) ->
+  $('#right-sidebar-title').text("Favorites")
+  $('#entries-list').html(data)
