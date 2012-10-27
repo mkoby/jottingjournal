@@ -1,8 +1,21 @@
+<div class="btn-toolbar" id="entry-nav">
+  <div class="btn-group">
+    <% if @entry.location %>
+      <%= link_to content_tag(:i, '', :class => "icon-map-marker") + " #{@entry.location.city}, #{@entry.location.state}", "https://maps.google.com/?q=#{@entry.location.zipcode}", :class => "btn btn-default" %>
+    <% end %>
+    <%= link_to_unless(@entry.is_favorite?, content_tag(:i, '', :class => "icon-star-empty", :id => "favorite_icon"), '#', :onclick => 'handle_favorite()', :class => "btn", :title => "Favorite", :id => "favorite", :remote => true) do |name|
+      link_to(content_tag(:i, '', :class => "icon-star", :id => "favorite_icon"), '#', :onclick => 'handle_favorite()', :class => "btn", :title => "Unfavorite", :id => "favorite", :remote => true)
+    end %>
+    <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(@entry), :class => "btn", :title => "Edit" %>
+    <%= link_to content_tag(:i, '', :class=> "icon-trash"), @entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete" %>
+  </div>
+</div>
+
 <% if @entry.has_photo? %>
   <h3>Entry Photos</h3>
   <%= link_to image_tag(@entry.photo.thumb260.url, :class => "img-polaroid"), 
     @entry.photo.url, 
     :class => "pull-right", 
     :style=> "padding-left: 5px; padding-bottom: 5px;" %>
-<% end %>
+  <% end %>
 
