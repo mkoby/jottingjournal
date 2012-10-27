@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jot Journal - Your Life, Your Journal</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container-fluid">
+  <head>
+    <title>Jot Journal - Your Life, Your Journal</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
     <div class="navbar">
       <div class="navbar-inner">
         <%= link_to 'Jot Journal', root_path, :class => "brand" %>
@@ -15,23 +14,25 @@
           <% if current_user %>
             <li><%= link_to 'New Entry', new_entry_path %></li>
           <% end %>
-          <li><%= link_to(current_user ? 'Logout' : 'Login', 
-                          current_user ? destroy_user_session_path : new_user_session_path, 
-                          :method => current_user ? 'delete' : 'get') %></li>
+          <li><%= link_to(current_user ? 'Logout' : 'Login', current_user ? destroy_user_session_path : new_user_session_path, :method => current_user ? 'delete' : 'get') %></li>
         </ul>
       </div>
     </div>
 
-    <div id="messages">
-      <% flash.each do |key, msg| %>
-        <%= display_flash(key, msg) %>
-      <% end %>
-    </div>
     <div class="row-fluid">
-      <%= yield %>
+      <div class="span6 offset3 pagination-centered" id="messages">
+        <% flash.each do |key, msg| %>
+          <%= display_flash(key, msg) %>
+        <% end %>
+      </div>
     </div>
 
-  </div>
-
-</body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span8 offest2">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
