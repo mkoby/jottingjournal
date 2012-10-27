@@ -1,8 +1,11 @@
-<div id="entry" entry-id="<%= @entry.id %>">
+<div class="span9" id="entry" entry-id="<%= @entry.id %>">
   <div>
     <h2><%= @entry.created_at.strftime("%B %d, %Y %I:%M%p") %></h2>
   </div>
   <div>
     <%= simple_format h(@entry.contents), { :id => "entry-text" } %>
   </div>
+</div>
+<div class="span3">
+  <%= render :partial => 'entry_sidebar' %>
 </div>

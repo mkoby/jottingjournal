@@ -1,8 +1,8 @@
 class EntriesController < ApplicationController
   layout "entries"
   before_filter :authenticate_user!
-  before_filter :get_entries, :only => [:index, :new, :show, :edit]
-  before_filter :get_entry, :except => [:index, :new, :create, :get_favorites]
+  before_filter :get_entries, :only => [:index, :new, :show, :edit, :get_older_entries]
+  before_filter :get_entry, :except => [:index, :new, :create, :get_favorites, :get_older_entries]
 
   def index
   end
@@ -10,6 +10,11 @@ class EntriesController < ApplicationController
   def new
     @entry ||= current_user.entries.new
     @entry.build_entry_photo
+
+    #Do this if we load the action via javascript
+    if params['layout'] == "false"
+      render(:layout => false) 
+    end
   end
 
   def create
@@ -18,7 +23,7 @@ class EntriesController < ApplicationController
 
     if @entry.save
       flash[:notice] = "Entry saved"
-      redirect_to root_path
+      redirect_to entry_path(@entry)
     else
       flash[:alert] = "Oops! Something went wrong, please try agagin. If the problem persists please let us know."
       render :new
@@ -26,6 +31,9 @@ class EntriesController < ApplicationController
   end
 
   def show
+    if params['layout'] == 'false'
+      render :layout => false
+    end
   end
 
   def edit
@@ -55,6 +63,10 @@ class EntriesController < ApplicationController
 
   def get_favorites
     @favorites = current_user.entries.favorites
+    render :layout => false
+  end
+
+  def get_older_entries
     render :layout => false
   end
 

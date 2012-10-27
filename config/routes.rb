@@ -9,6 +9,7 @@ Jotjournal::Application.routes.draw do
 
   match 'entries/:id/favorite' => 'entries#favorite'
   match 'entries/get_favorites' => 'entries#get_favorites', :via => :get
+  match 'entries/get_older_entries' => 'entries#get_older_entries', :via => :get
 
   resources :entries
   # The priority is based upon order of creation:

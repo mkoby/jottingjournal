@@ -1,0 +1,3 @@
+<% @entries.each do |entry| %>
+  <%= render(:partial => 'sidebar-entry', :locals => { :entry => entry }) if entry.created_at %>
+<% end %>

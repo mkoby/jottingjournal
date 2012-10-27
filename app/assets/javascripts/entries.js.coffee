@@ -2,6 +2,20 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+this.load_entry = (entry_id) ->
+  $.ajax '/entries/' + entry_id,
+    type: 'GET',
+    data: { layout: false },
+    success: (data) -> 
+      $('#entry-space').html(data)
+
+this.new_entry = ->
+  $.ajax '/entries/new',
+    type: 'GET',
+    data: { layout: false },
+    success: (data) -> 
+      $('#entry-space').html(data)
+
 this.get_location = ->
   navigator.geolocation.getCurrentPosition acquired_location, handle_error
 acquired_location = (position) ->
@@ -28,7 +42,15 @@ this.load_favorites = ->
   $.ajax '/entries/get_favorites',
     type: 'GET',
     data: null,
-    success: success_load_favorites
-success_load_favorites = (data) ->
-  $('#right-sidebar-title').text("Favorites")
-  $('#entries-list').html(data)
+    success: (data) ->
+      $('#right-sidebar-title').text("Favorites")
+      $('#entries-list').html(data)
+
+this.load_older_entries = ->
+  $.ajax '/entries/get_older_entries',
+    type: 'GET',
+    data: null,
+    success: (data) ->
+      $('#right-sidebar-title').text("Older Entries")
+      $('#entries-list').html(data)
+
