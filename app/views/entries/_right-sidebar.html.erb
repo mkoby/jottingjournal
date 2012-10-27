@@ -3,16 +3,16 @@
     <div class="btn-group">
       <%= link_to content_tag(:i, nil, :class => "icon-plus"), new_entry_path, :class => "btn", :title => "New Entry" %>
       <%= link_to content_tag(:i, nil, :class => "icon-time"), new_entry_path, :class => "btn", :title => "Older Entries" %>
-      <%= link_to content_tag(:i, nil, :class => "icon-star"), new_entry_path, :class => "btn", :title => "Favorites" %>
+      <%= link_to content_tag(:i, nil, :class => "icon-star"), '#', :onclick => "load_favorites()", :class => "btn", :title => "Favorites" %>
     </div>
   </div>
  <% if @entries %>
    <h3 id="right-sidebar-title">Older Entries</h3>
    <div class="row-fluid" id="sidebar-entries">
      <table class="table table-striped">
-       <tbody>
+       <tbody id="entries-list">
          <% @entries.each do |e| %>
-           <%= render(:partial => 'sidebar-entry', :locals => { :old_entry => e }) if e.created_at %>
+           <%= render(:partial => 'sidebar-entry', :locals => { :entry => e }) if e.created_at %>
          <% end %>
         </tbody>
       </table>

@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   layout "entries"
   before_filter :authenticate_user!
   before_filter :get_entries, :only => [:index, :new, :show, :edit]
-  before_filter :get_entry, :only => [:show, :edit, :update, :destroy, :favorite]
+  before_filter :get_entry, :except => [:index, :new, :create, :get_favorites]
 
   def index
   end
@@ -51,6 +51,11 @@ class EntriesController < ApplicationController
     else
       return false
     end
+  end
+
+  def get_favorites
+    @favorites = current_user.entries.favorites
+    render :layout => false
   end
 
   private
