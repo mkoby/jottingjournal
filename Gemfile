@@ -6,6 +6,7 @@ gem 'geocoder'
 gem 'fog', '~> 1.3.1'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,7 +23,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'thin'
 end
 
 group :production do
