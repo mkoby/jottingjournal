@@ -37,6 +37,7 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    @entry.build_entry_photo unless @entry.entry_photo
   end
 
   def update

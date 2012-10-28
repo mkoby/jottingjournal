@@ -1,10 +1,8 @@
 <tr>
   <td>
     <p class="pagination-centered">
-    <strong><%= link_to entry.created_at.strftime("%m/%e/%Y %m:%M%p"), '#', :onclick => "load_entry(#{entry.id})", :class => "muted" %></strong>
+    <strong><%= link_to entry.created_at.strftime("%b %d, %Y"), '#', :onclick => "load_entry(#{entry.id})", :class => "muted" %></strong>
     </p>
-  </td>
-  <td>
     <p class="pagination-centered">
       <small><%= "#{entry.contents[0..100]}#{'...' if entry.contents.length > 100}" %></small>
     </p>
