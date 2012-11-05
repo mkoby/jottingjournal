@@ -9,12 +9,13 @@ this.load_entry = (entry_id) ->
     success: (data) -> 
       $('#entry-space').html(data)
 
-this.new_entry = ->
+this.new_entry = (event) ->
   $.ajax '/entries/new',
     type: 'GET',
     data: { layout: false },
     success: (data) -> 
       $('#entry-space').html(data)
+  event.preventDefault()
 
 this.get_location = ->
   navigator.geolocation.getCurrentPosition acquired_location, handle_error
@@ -41,16 +42,18 @@ success_favorite = ->
 this.load_favorites = ->
   $.ajax '/entries/get_favorites',
     type: 'GET',
-    data: null,
+    data: { layout: false },
     success: (data) ->
       $('#right-sidebar-title').text("Favorites")
-      $('#entries-list').html(data)
+      $('#entry-space').html(data)
+  event.preventDefault()
 
-this.load_older_entries = ->
-  $.ajax '/entries/get_older_entries',
+this.load_older_entries = (event) ->
+  $.ajax '/entries',
     type: 'GET',
-    data: null,
+    data: { layout: false },
     success: (data) ->
       $('#right-sidebar-title').text("Older Entries")
-      $('#entries-list').html(data)
+      $('#entry-space').html(data)
+  event.preventDefault()
 
