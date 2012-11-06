@@ -26,18 +26,20 @@ handle_error = (err) ->
   $("#location_checkbox").val "0"
   $("#attach_location").hide()
 
-this.handle_favorite = ->
-  $.ajax '/entries/' + $('#entry').attr('entry-id') + '/favorite',
+this.handle_favorite = (event, entry_id) ->
+  $.ajax '/entries/' + entry_id + '/favorite',
     type: 'GET',
     data: { id: $('#entry').attr('entry-id') },
-    success: success_favorite
-success_favorite = ->
-  fav_icon = $("#favorite_icon")
+    success: success_favorite(entry_id)
+  event.preventDefault()
+
+success_favorite = (entry_id) ->
+  fav_icon = $("#favorite_icon-" + entry_id)
   if fav_icon.hasClass('icon-star-empty')
     fav_icon.removeClass('icon-star-empty').addClass('icon-star')
   else
     fav_icon.removeClass('icon-star').addClass('icon-star-empty')
-  return false
+  
 
 this.load_favorites = ->
   $.ajax '/entries/get_favorites',
