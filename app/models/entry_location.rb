@@ -3,7 +3,7 @@ class EntryLocation < ActiveRecord::Base
   attr_accessible :latitude, :longitude
   attr_writer :address
 
-  MAP_URL_BASE = "https://maps.google.com/?q="
+  MAP_URL_BASE = "https://maps.google.com/?t=h&q="
 
   reverse_geocoded_by :latitude, :longitude  do |obj, results|
     if geo = results.first
