@@ -7,7 +7,7 @@ Jotjournal::Application.routes.draw do
   root :to => 'home#index'
   get "home/index"
 
-  match 'entries/:id/favorite' => 'entries#favorite'
+  match 'entries/:id/favorite' => 'entries#favorite', :as => 'favorite_entry'
   match 'entries/get_favorites' => 'entries#get_favorites', :via => :get
   match 'entries/get_older_entries' => 'entries#get_older_entries', :via => :get
 
