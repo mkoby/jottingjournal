@@ -33,6 +33,10 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def pretty_time
+    self.created_at.localtime.strftime("%B %d, %Y %I:%M%p")
+  end
+
   private
 
   def hash_entry

@@ -1,5 +1,5 @@
 <div>
-  <h2><%= link_to entry.created_at.strftime("%B %d, %Y %I:%M%p"), entry_path(entry) %></h2>
+  <h2><%= link_to entry.pretty_time, entry_path(entry) %></h2>
   <p><%= simple_format h entry.shorten_contents %></p>
   <p>
   <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>
