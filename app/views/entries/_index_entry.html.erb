@@ -2,15 +2,7 @@
   <h2><%= link_to entry.created_at.strftime("%B %d, %Y %I:%M%p"), entry_path(entry) %></h2>
   <p><%= simple_format h entry.shorten_contents %></p>
   <p>
-  <div class="btn-toolbar pull-right">
-    <div class="btn-group">
-      <% if entry.location %>
-        <%= link_to "#{entry.location.city}, #{entry.location.state}", "https://maps.google.com/?q=#{entry.location.city},#{entry.location.state}", :class => "btn" %>
-      <% end %>
-      <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(entry), :class => "btn", :title => "Edit" %>
-      <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete" %>
-    </div>
-  </div>
-  </p>
+  <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>
+    </p>
 </div>
 <br />
