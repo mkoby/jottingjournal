@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
     attach_location
 
     if @entry.save
-      flash[:notice] = "Entry saved"
+      flash[:notice] = "Entry saved."
       redirect_to entry_path(@entry)
     else
       flash[:alert] = "Oops! Something went wrong, please try agagin. If the problem persists please let us know."
