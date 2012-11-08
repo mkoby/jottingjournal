@@ -7,7 +7,7 @@ class Entry < ActiveRecord::Base
   before_save :hash_entry
 
   scope :favorites, :conditions => { :is_favorite => true }
-  accepts_nested_attributes_for :entry_photo
+  accepts_nested_attributes_for :entry_photo, :reject_if => :all_blank
 
   def location
     self.entry_location
