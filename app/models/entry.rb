@@ -34,7 +34,7 @@ class Entry < ActiveRecord::Base
   end
 
   def pretty_time
-    self.created_at.localtime.strftime("%B %d, %Y %I:%M%p")
+    self.created_at.utc.strftime("%B %d, %Y %I:%M%p UTC")
   end
 
   private
