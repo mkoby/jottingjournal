@@ -5,16 +5,13 @@ class EntriesController < ApplicationController
   before_filter :get_entry, :except => [:index, :new, :create, :get_favorites, :get_older_entries]
 
   def index
+    render_layout?
   end
 
   def new
     @entry ||= current_user.entries.new
     @entry.build_entry_photo
-
-    #Do this if we load the action via javascript
-    if params['layout'] == "false"
-      render(:layout => false) 
-    end
+    render_layout?
   end
 
   def create
@@ -22,7 +19,7 @@ class EntriesController < ApplicationController
     attach_location
 
     if @entry.save
-      flash[:notice] = "Entry saved"
+      flash[:notice] = "Entry saved."
       redirect_to entry_path(@entry)
     else
       flash[:alert] = "Oops! Something went wrong, please try agagin. If the problem persists please let us know."
@@ -31,9 +28,7 @@ class EntriesController < ApplicationController
   end
 
   def show
-    if params['layout'] == 'false'
-      render :layout => false
-    end
+    render_layout?
   end
 
   def edit
@@ -64,11 +59,7 @@ class EntriesController < ApplicationController
 
   def get_favorites
     @favorites = current_user.entries.favorites
-    render :layout => false
-  end
-
-  def get_older_entries
-    render :layout => false
+    render_layout?
   end
 
   private
@@ -86,6 +77,13 @@ class EntriesController < ApplicationController
 
     if attach_location && attach_location == 1
       @entry.entry_location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
+    end
+  end
+
+  def render_layout?
+    #Do this if we load the action via javascript
+    if params['layout'] == "false"
+      render(:layout => false) 
     end
   end
 end

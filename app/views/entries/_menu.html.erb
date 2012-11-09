@@ -1,0 +1,15 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <%= link_to 'Jotting Journal', root_path, :class => "brand" %>
+    <ul class="nav">
+      <% if current_user %>
+        <li><%= link_to content_tag(:i, '', :class => "icon-edit") + ' New Entry', new_entry_path, :onclick => "new_entry(event);", :title => "New Entry" %></li>
+        <li><%= link_to content_tag(:i, '', :class => "icon-time") + ' Older Entries', entries_path, :onclick => "load_older_entries(event);", :title => "Older Entries" %></li>
+        <li><%= link_to content_tag(:i, '', :class => "icon-star") + ' Favorites', entries_get_favorites_path, :onclick => "load_favorites(event);", :title => "Favorites" %></li>
+      <% end %>
+    </ul>
+    <ul class="nav pull-right">
+      <li><%= link_to(current_user ? 'Logout' : 'Login', current_user ? destroy_user_session_path : new_user_session_path, :method => current_user ? 'delete' : 'get') %></li>
+    </ul>
+  </div>
+</div>

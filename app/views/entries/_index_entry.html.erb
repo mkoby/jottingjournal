@@ -1,16 +1,21 @@
 <div>
-  <h2><%= link_to entry.created_at.strftime("%B %d, %Y %I:%M%p"), entry_path(entry) %></h2>
-  <p><%= simple_format h entry.shorten_contents %></p>
-  <p>
-  <div class="btn-toolbar pull-right">
-    <div class="btn-group">
-      <% if entry.location %>
-        <%= link_to "#{entry.location.city}, #{entry.location.state}", "https://maps.google.com/?q=#{entry.location.city},#{entry.location.state}", :class => "btn" %>
-      <% end %>
-      <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(entry), :class => "btn", :title => "Edit" %>
-      <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete" %>
+  <div class="span12">
+    <div class="span8">
+      <h2><%= link_to entry.pretty_time, entry_path(entry) %></h2>
+    </div>
+    <div class="span3">
+     <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>
     </div>
   </div>
-  </p>
+  <div class="row-fluid">
+    <%- if entry.has_photo? %>
+      <div class="span2">
+        <%= image_tag entry.photo.thumb160.url, :class => "img-polaroid" %>
+      </div>
+    <% end %>
+    <div class="span7">
+      <%= simple_format h entry.shorten_contents %>
+    </div>
+  </div>
 </div>
 <br />

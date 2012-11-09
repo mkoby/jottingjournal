@@ -7,7 +7,7 @@ class Entry < ActiveRecord::Base
   before_save :hash_entry
 
   scope :favorites, :conditions => { :is_favorite => true }
-  accepts_nested_attributes_for :entry_photo
+  accepts_nested_attributes_for :entry_photo, :reject_if => :all_blank
 
   def location
     self.entry_location
@@ -31,6 +31,10 @@ class Entry < ActiveRecord::Base
     else 
       contents
     end
+  end
+
+  def pretty_time
+    self.created_at.utc.strftime("%B %d, %Y %I:%M%p UTC")
   end
 
   private
