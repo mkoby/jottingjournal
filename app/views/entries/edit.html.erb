@@ -1,5 +1,5 @@
-<div class="row8 offset2">
+<div class="row9 offset1">
   <h2>Edit Entry</h2>
-  <h5>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></h5>
+  <h5>for <%= @entry.created_at.strftime("%a, %e %b %Y %H:%M") %></h5>
   <%= render :partial => 'form' %>
 </div>
