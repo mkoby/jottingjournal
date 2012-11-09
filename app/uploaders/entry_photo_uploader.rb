@@ -17,7 +17,7 @@ class EntryPhotoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{Date.today.strftime('%F')}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%F')}/#{model.id}"
   end
 
   version :thumb160 do
