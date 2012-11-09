@@ -17,6 +17,16 @@ this.new_entry = (event) ->
       $('#entry-space').html(data)
   event.preventDefault()
 
+$(document).ready ->
+  $("#location_checkbox").change ->
+    if this.checked == false
+      $("#location_checkbox").val "0"
+      $("#latitude").val null
+      $("#longitude").val null
+    else
+      $("#location_checkbox").val "1"
+      get_location()
+      
 this.get_location = ->
   navigator.geolocation.getCurrentPosition acquired_location, handle_error
 acquired_location = (position) ->
@@ -24,7 +34,7 @@ acquired_location = (position) ->
   $("#longitude").val position.coords.longitude
 handle_error = (err) ->
   $("#location_checkbox").val "0"
-  $("#attach_location").hide()
+  $("#location_checkbox").prop('checked', false)
 
 this.handle_favorite = (event, entry_id) ->
   $.ajax '/entries/' + entry_id + '/favorite',
@@ -58,4 +68,3 @@ this.load_older_entries = (event) ->
       $('#right-sidebar-title').text("Older Entries")
       $('#entry-space').html(data)
   event.preventDefault()
-
