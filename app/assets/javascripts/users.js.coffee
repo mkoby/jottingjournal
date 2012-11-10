@@ -1,6 +1,9 @@
 stripeResponseHandler = (status, response) ->
   if response.error
     $("#payment_errors").text response.error.message
+    if($("#payment_errors").is(":hidden"))
+      console.log("toggle errors")
+      $("#payment_errors").toggle()
     $("#user_submit").removeAttr "disabled"
   else
     form = $("#new_user")
