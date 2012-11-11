@@ -9,20 +9,10 @@
     <%= javascript_tag(yield :javascript) %>
   </head>
   <body>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <%= link_to 'Jotting Journal', root_path, :class => "brand" %>
-        <ul class="nav pull-right">
-          <% unless current_user %>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <% end %>
-          <li><%= link_to(current_user ? 'Logout' : 'Login', current_user ? destroy_user_session_path : new_user_session_path, :method => current_user ? 'delete' : 'get') %></li>
-        </ul>
-      </div>
-    </div>
+    <%= render :partial => "entries/menu" %>
 
     <div class="row-fluid">
-      <div class="span6 offset3 pagination-centered" id="messages">
+      <div class="span5 offset4 pagination-centered" id="messages">
         <% flash.each do |key, msg| %>
           <%= display_flash(key, msg) %>
         <% end %>

@@ -9,6 +9,9 @@
       <% end %>
     </ul>
     <ul class="nav pull-right">
+      <% if current_user %>
+        <li><%= link_to 'My Account', edit_user_registration_path %></li>
+      <% end %>
       <li><%= link_to(current_user ? 'Logout' : 'Login', current_user ? destroy_user_session_path : new_user_session_path, :method => current_user ? 'delete' : 'get') %></li>
     </ul>
   </div>
