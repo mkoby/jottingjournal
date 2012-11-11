@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :remove_billing_params, :only => [:create, :update]
-
   DEFAULT_PLAN_NAME = "jotting-journal-yearly"
 
   def new
@@ -43,9 +42,15 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update_stripe_customer
+    return unless params[:stripe_token]
     Stripe.api_key = ENV['STRIPE_API_KEY_SECRET']
     customer = Stripe::Customer.retrieve(resource.subscription.stripe_customer_id)
     customer.card = params[:stripe_token]
-    customer.save
+    customer.email = params[:user][:email] if customer.email != params[:user][:email]
+    if customer.save
+      subscription = Subscription.find_by_stripe_customer_id(customer.id)
+      subscription.stripe_token = params[:stripe_token]
+      subscription.save
+    end
   end
 end

@@ -15,3 +15,7 @@
 
   <%= link_to "Back", :back %>
 </div>
+
+<%= content_for :javascript do %>
+  Stripe.setPublishableKey("<%= "#{ENV['STRIPE_API_KEY_PUBLIC']}" %>");
+<% end %>
