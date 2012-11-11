@@ -1,9 +1,10 @@
 Jotjournal::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   authenticated :user do
     root :to => "entries#new"
   end
+
   root :to => 'home#index'
   get "home/index"
 

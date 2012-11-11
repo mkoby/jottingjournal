@@ -1,0 +1,35 @@
+<%= f.fields_for 'billing' do |b| %>
+  <h3>Billing</h3>
+
+  <% if controller.action_name == "edit" %>
+    <p class="muted">Leave these fields empty unless you're changing your billing information.</p>
+  <% end %>
+
+  <div id="payment_errors" class="alert alert-error pagination-centered" style="display:none"></div>
+  <div class="control-group">
+    <%= b.label :credit_card_number, 'Credit Card Number', :class => "control-label" %>
+    <div class="controls">
+      <%= b.text_field :credit_card_number %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= b.label :credit_card_exp, 'Expires', :class => "control-label" %>
+    <div class="controls">
+      <%= b.text_field :credit_card_exp_month, :class => "input-mini", :placeholder => Date.today.month %> / 
+      <%= b.text_field :credit_card_exp_year, :class => "input-mini", :placeholder => Date.today.year %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= b.label :credit_card_cvc, 'CVC#', :class => "control-label" %>
+    <div class="controls">
+      <%= b.text_field :credit_card_cvc %>
+    </div>
+  </div>
+
+  <% if controller.action_name == "new" %> 
+    <h4>
+      <small>You have 30 days free. You're billed $36 for the year on day 31.</small>
+    </h4>
+  <% end %>
+<% end %>
+
