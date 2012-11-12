@@ -65,7 +65,7 @@ class EntriesController < ApplicationController
   private
 
   def get_entries
-    @entries = current_user.entries.reverse
+    @entries = current_user.entries.order('created_at DESC')
   end
 
   def get_entry
