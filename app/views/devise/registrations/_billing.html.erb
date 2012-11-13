@@ -7,6 +7,12 @@
 
   <div id="payment_errors" class="alert alert-error pagination-centered" style="display:none"></div>
   <div class="control-group">
+    <%= b.label :credit_card_name, 'Name', :class => "control-label" %>
+    <div class="controls">
+      <%= b.text_field :credit_card_name, :placeholder => 'Name on Credit Card' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= b.label :credit_card_number, 'Credit Card Number', :class => "control-label" %>
     <div class="controls">
       <%= b.text_field :credit_card_number %>

@@ -22,6 +22,7 @@ $(document).ready ->
       cvc: $("#user_billing_credit_card_cvc").val()
       exp_month: $("#user_billing_credit_card_exp_month").val()
       exp_year: $("#user_billing_credit_card_exp_year").val()
+      name: $("#user_billing_credit_card_name").val()
     , stripeResponseHandler
 
     event.preventDefault()
@@ -34,6 +35,7 @@ $(document).ready ->
       form.get(0).submit
     else
       Stripe.createToken
+        name: $("#user_billing_credit_card_name").val()
         number: $("#user_billing_credit_card_number").val()
         cvc: $("#user_billing_credit_card_cvc").val()
         exp_month: $("#user_billing_credit_card_exp_month").val()
