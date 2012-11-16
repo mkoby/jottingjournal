@@ -69,7 +69,12 @@ class EntriesController < ApplicationController
   end
 
   def get_entry
-    @entry = Entry.find(params[:id])
+    @entry = current_user.entries.where(:id => params[:id]).first
+
+    unless @entry
+      flash[:alert] = "Can't find the entry specified"
+      redirect_to root_path
+    end
   end
 
   def attach_location
