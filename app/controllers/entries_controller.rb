@@ -62,6 +62,17 @@ class EntriesController < ApplicationController
     render_layout?
   end
 
+  def delete_entry_photo
+    @photo = EntryPhoto.find(params[:photo_id])
+    if @photo
+      @photo.destroy
+    end
+
+    @entry.reload
+
+    redirect_to entry_path(@entry)
+  end
+
   private
 
   def get_entries

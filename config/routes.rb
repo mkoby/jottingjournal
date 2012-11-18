@@ -11,6 +11,7 @@ Jotjournal::Application.routes.draw do
   match 'entries/:id/favorite' => 'entries#favorite', :as => 'favorite_entry'
   match 'entries/get_favorites' => 'entries#get_favorites', :via => :get
   match 'entries/get_older_entries' => 'entries#get_older_entries', :via => :get
+  match 'entries/:id/delete_photo/:photo_id' => 'entries#delete_entry_photo', :as => 'delete_entry_photo', :via => :put
 
   resources :entries
   # The priority is based upon order of creation:
