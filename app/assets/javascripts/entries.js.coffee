@@ -72,3 +72,10 @@ this.load_older_entries = (event) ->
       $('#right-sidebar-title').text("Older Entries")
       $('#entry-space').html(data)
   event.preventDefault()
+
+this.delete_entry_photo = (event, entry_id, entry_photo_id) ->
+  event.preventDefault()
+  $.ajax "/entries/" + entry_id + "/delete_photo/" + entry_photo_id,
+    type: 'GET',
+    success: (data) ->
+      $("#entry-photos").remove()
