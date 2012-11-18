@@ -79,3 +79,18 @@ this.delete_entry_photo = (event, entry_id, entry_photo_id) ->
     type: 'GET',
     success: (data) ->
       $("#entry-photos").remove()
+  event.stopPropagation()
+
+this.delete_entry_from_index = (event, entry_id) ->
+  #event.preventDefault()
+  if(confirm("Do you really want to delete this entry?"))
+    $.ajax "/entries/" + entry_id,
+      type: 'DELETE',
+      success: (data) -> 
+        entry_div = $("#entry-" + entry_id)
+        if(entry_div.length != 0 )
+          entry_div.remove()
+        else
+          window.location = "/"
+  event.stopPropagation()
+

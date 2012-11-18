@@ -7,7 +7,7 @@
       link_to(content_tag(:i, '', :class => "icon-star", :id => "favorite_icon-#{entry.id}"), favorite_entry_path(entry), :onclick => "handle_favorite(event, #{entry.id})", :class => "btn", :title => "Unfavorite", :id => "favorite", :remote => true)
     end %>
     <%= link_to content_tag(:i, '', :class=> "icon-edit"), edit_entry_path(entry), :class => "btn", :title => "Edit" %>
-    <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete" %>
+    <%= link_to content_tag(:i, '', :class=> "icon-trash"), entry, :confirm => "Do you really want to delete this entry?", :method => :delete, :class => "btn", :title => "Delete", :onclick => "delete_entry_from_index(event, #{entry.id}); return false;" %>
   </div>
 </div>
 
