@@ -8,6 +8,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'thin'
 gem 'stripe'
+gem 'redcarpet'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
