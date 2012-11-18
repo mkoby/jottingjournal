@@ -3,8 +3,8 @@
   <div>
     <h2><%= @entry.pretty_time %></h2>
   </div>
-  <div>
-    <%= simple_format h(@entry.contents), { :id => "entry-text" } %>
+  <div id="entry-text">
+    <%= @entry.markdown_as_html.html_safe %>
   </div>
 </div>
 <div class="span3 pull-right">
