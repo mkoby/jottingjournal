@@ -26,6 +26,10 @@ $(document).ready ->
     else
       $("#location_checkbox").val "1"
       get_location()
+
+$(document).ready ->
+  $("#entry-photos").hover ->
+    $("#photo-delete-link").toggle()
       
 this.get_location = ->
   navigator.geolocation.getCurrentPosition acquired_location, handle_error

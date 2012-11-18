@@ -3,16 +3,18 @@
 <% end %>
 
 <% if @entry.has_photo? %>
-  <div class="inline">
+  <div class="inline" id="entry-photos">
       <%= link_to image_tag(@entry.photo.thumb260.url, :class => "img-polaroid"), 
-          @entry.photo.url %>
-          <small>
-      <%= link_to 'Delete [x]', 
-          delete_entry_photo_path(@entry, @entry.entry_photo), 
-          :title => 'Delete Photo', 
-          :method => :put,
-          :class => "muted pull-right" %>
-        </small>
+        @entry.photo.url %>
+      <div id="photo-delete-link", style="display: none;">
+        <small>
+          <%= link_to 'Delete [x]', 
+              delete_entry_photo_path(@entry, @entry.entry_photo), 
+              :title => 'Delete Photo', 
+              :method => :put,
+              :class => "muted pull-right" %>
+       </small>
+     </div>
   </div>
 <% end %>
 
