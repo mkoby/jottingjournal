@@ -37,7 +37,7 @@ class Entry < ActiveRecord::Base
     self.created_at.utc.strftime("%B %d, %Y %I:%M%p UTC")
   end
 
-  def markdown_as_html
+  def contents_as_markdown
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     markdown.render(self.contents)
   end

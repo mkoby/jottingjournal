@@ -4,7 +4,7 @@
     <h2><%= @entry.pretty_time %></h2>
   </div>
   <div id="entry-text">
-    <%= @entry.markdown_as_html.html_safe %>
+    <%= @entry.contents_as_markdown.html_safe %>
   </div>
 </div>
 <div class="span3 pull-right">
