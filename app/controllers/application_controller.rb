@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_domain
     if request.env['HTTP_HOST'] == "jottingjournal.com"
-      redirect_to "https://www.jottingjournal.com#{request.fullpath}", 301
+      redirect_to "https://www.jottingjournal.com#{request.fullpath}"
     end
   end
 end
