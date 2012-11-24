@@ -14,9 +14,12 @@
           <%= hidden_field_tag :longitude %>
         </td>
         <td style="border: none;">
-          <%= f.fields_for :entry_photo do |pf| %>
-            <%= pf.label :photo %>
-            <%= pf.file_field :photo %>
+          <%= f.fields_for :entry_photo, :html => { :id => "fileupload" } do |pf| %>
+            <span class="btn fileinput-button">
+              <%= content_tag(:i, '', :class => "icon-camera") %>
+              <span>Add Photo</span>
+              <%= pf.file_field :photo %>
+            </span>
           <% end %>
         </td>
       </tr>
