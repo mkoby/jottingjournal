@@ -7,7 +7,9 @@
           <%= f.submit "Save", :class => "btn btn-inverse" %>
         </td>
         <td style="border: none;">
-          <%= label_tag nil, check_box_tag(:attach_location?, '1', true, :id => "location_checkbox") + 'Attach Location?', :class => 'checkbox', :id=> "attach_location" %>
+          <noscript>Javascript needed for storing location.</noscript>
+          <%= link_to content_tag(:i, '', :class => "icon-map-marker"), '#', :onclick => "handleLocationButton(event); return false;", :class => "btn btn-success", :id => "location-button" %>
+          <%= hidden_field_tag :attach_location, true %>
           <%= hidden_field_tag :latitude %>
           <%= hidden_field_tag :longitude %>
         </td>

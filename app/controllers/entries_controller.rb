@@ -89,9 +89,9 @@ class EntriesController < ApplicationController
   end
 
   def attach_location
-    attach_location = params[:attach_location?].to_i
+    attach_location = params[:attach_location]
 
-    if attach_location && attach_location == 1
+    if attach_location && attach_location == "true"
       @entry.entry_location = EntryLocation.create(:latitude => params[:latitude], :longitude => params[:longitude])
     end
   end

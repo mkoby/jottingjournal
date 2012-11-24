@@ -18,27 +18,37 @@ this.new_entry = (event) ->
   event.preventDefault()
 
 $(document).ready ->
-  $("#location_checkbox").change ->
-    if this.checked == false
-      $("#location_checkbox").val "0"
-      $("#latitude").val null
-      $("#longitude").val null
-    else
-      $("#location_checkbox").val "1"
-      get_location()
-
-$(document).ready ->
   $("#entry-photos").hover ->
     $("#photo-delete-link").toggle()
       
+this.handleLocationButton = (event, button) ->
+  locationButton = null
+
+  if button != undefined
+    locationButton = button
+  else
+    locationButton = $("#location-button")
+
+  if locationButton.hasClass("btn-success") == true
+    $("#attach_location").val "false"
+    $("#latitude").val null
+    $("#longitude").val null
+    locationButton.removeClass("btn-success")
+  else
+    get_location()
+
+  event.stopPropagation()
+
 this.get_location = ->
   navigator.geolocation.getCurrentPosition acquired_location, handle_error
 acquired_location = (position) ->
+  $("#attach_location").val true
   $("#latitude").val position.coords.latitude
   $("#longitude").val position.coords.longitude
+  $("#location-button").addClass("btn-success")
 handle_error = (err) ->
-  $("#location_checkbox").val "0"
-  $("#location_checkbox").prop('checked', false)
+  $("#attach_location").val false
+  $("#location-button").removeClass("btn-success").addClass("btn-info")
 
 this.handle_favorite = (event, entry_id) ->
   $.ajax '/entries/' + entry_id + '/favorite',
