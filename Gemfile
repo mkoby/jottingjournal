@@ -16,6 +16,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.1.0.0' 
   gem 'bootswatch-rails'
+  gem 'jquery-fileupload-rails'
 end
 
 gem 'jquery-rails'
