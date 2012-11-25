@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="hero-unit span7 offset1" style="height: 600px;">
+  <div class="hero-unit span7 offset1">
     <h1>Jotting Journal</h1>
     <h2 style="padding-left: 35px;">Your journal, everywhere.</h2>
     <br />
@@ -11,6 +11,26 @@
     </p>
     <p>It's all about context. <strong>Your</strong> context.</p>
     <br />
+    <ul class="thumbnails" id="thumbnails">
+      <li class="span4">
+        <div class="thumbnail">
+          <%= image_tag "frontpage/location_photo_buttons.png", :class => "img-polaroid", :style => "height: 187px;" %>
+          <h4>Location & Photo</h4>
+        </div>
+      </li>
+      <li class="span4">
+        <div class="thumbnail">
+          <%= image_tag "frontpage/entry_sidebar.png", :class => "img-polaroid", :style => "height: 187px;" %>
+          <h4>Entry Metadata</h4>
+        </div>
+      </li>
+      <li class="span4">
+        <div class="thumbnail">
+          <%= image_tag "frontpage/markdown_support.png", :class => "img-polaroid", :style => "height: 187px;" %>
+          <h4>Markdown Support</h4>
+        </div>
+      </li>
+    </ul>
     <div class="pagination-centered">
       <h2>Try it Free for 30 Days! <small>($36/year after that)</small></h2>
       <%= link_to 'Sign Up Now', new_user_registration_path, :class => "btn btn-large btn-block btn-inverse" %>
