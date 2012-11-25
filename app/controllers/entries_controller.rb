@@ -36,6 +36,7 @@ class EntriesController < ApplicationController
   end
 
   def update
+    attach_location
     if @entry.update_attributes(params[:entry])
       flash[:notice] = "Entry updated."
       redirect_to entry_path(@entry)

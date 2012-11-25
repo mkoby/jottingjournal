@@ -22,6 +22,16 @@ class Entry < ActiveRecord::Base
     self.entry_photo.nil? || self.entry_photo.new_record? ? false : true
   end
 
+  def has_location?
+    if self.entry_location.nil?
+      return false
+    elsif self.entry_location.latitude.nil? || self.entry_location.longitude.nil?
+      return false
+    end
+
+    return true
+  end
+
   def shorten_contents(count = 512)
     if contents.length >= count 
       shortened = contents[0, count]

@@ -7,10 +7,10 @@
           <%= f.submit "Save", :class => "btn btn-inverse" %>
         </td>
         <td style="border: none;">
-          <%= link_to content_tag(:i, '', :class => "icon-map-marker"), '#', :onclick => "handleLocationButton(event); return false;", :class => "btn btn-success", :id => "location-button" %>
-          <%= hidden_field_tag :attach_location, true %>
-          <%= hidden_field_tag :latitude %>
-          <%= hidden_field_tag :longitude %>
+          <%= link_to content_tag(:i, '', :class => "icon-map-marker"), '#', :onclick => "handleLocationButton(event); return false;", :class => "btn #{@entry.has_location? ? 'btn-success' : ''}", :id => "location-button" %>
+          <%= hidden_field_tag :attach_location, @entry.has_location?.to_s %>
+          <%= hidden_field_tag :latitude, @entry.entry_location.latitude %>
+          <%= hidden_field_tag :longitude, @entry.entry_location.longitude %>
 
           <%= f.fields_for :entry_photo, :html => { :id => "fileupload" } do |pf| %>
             <span class="btn fileinput-button">
