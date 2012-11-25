@@ -9,8 +9,8 @@
         <td style="border: none;">
           <%= link_to content_tag(:i, '', :class => "icon-map-marker"), '#', :onclick => "handleLocationButton(event); return false;", :class => "btn #{@entry.has_location? ? 'btn-success' : ''}", :id => "location-button" %>
           <%= hidden_field_tag :attach_location, @entry.has_location?.to_s %>
-          <%= hidden_field_tag :latitude, @entry.entry_location.latitude %>
-          <%= hidden_field_tag :longitude, @entry.entry_location.longitude %>
+          <%= hidden_field_tag :latitude, @entry.entry_location ? @entry.entry_location.latitude : nil %>
+          <%= hidden_field_tag :longitude, @entry.entry_location ? @entry.entry_location.longitude : nil %>
 
           <%= f.fields_for :entry_photo, :html => { :id => "fileupload" } do |pf| %>
             <span class="btn fileinput-button">
