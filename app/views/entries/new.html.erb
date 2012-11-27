@@ -1,6 +1,5 @@
-<div class="span10 offset1">
-  <h2>New Entry</h2>
-  <h5>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></h5>
+<div class="span10 offset2">
+  <h2>New Entry <small>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></small></h2>
   <%= render :partial => 'form' %>
 </div>
 
