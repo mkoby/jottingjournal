@@ -59,7 +59,7 @@ class EntriesController < ApplicationController
   end
 
   def get_favorites
-    @favorites = current_user.entries.favorites
+    @favorites = current_user.entries.includes(:entry_location, :entry_photo).favorites.order('created_at DESC')
     render_layout?
   end
 
