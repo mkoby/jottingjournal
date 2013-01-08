@@ -7,47 +7,60 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
-
-  <h3>User</h3>
-  <div class="control-group">
-    <%= f.label :email, :class => "control-label" %>
-    <div class="controls">
-      <%= f.email_field :email %>
-    </div>
-  </div>
-
-  <% if controller.action_name == "edit" %>
-    <div class="control-group">
-      <%= f.label :current_password, :class => "control-label" %>
-      <div class="controls">
-        <%= f.password_field :current_password %>
-      <div class="muted">Needed to confirm changes</div>
+  <div class="row">
+    <div class="span5">
+      <h3>User</h3>
+      <div class="control-group">
+        <%= f.label :email, :class => "control-label" %>
+        <div class="controls">
+          <%= f.email_field :email %>
+        </div>
       </div>
-   </div>
-  <% end %>
 
-  <div class="control-group">
-    <%= f.label :password, :class => "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password %>
       <% if controller.action_name == "edit" %>
-        <div class="muted">Leave blank unless changing your password</div>
+        <div class="control-group">
+          <%= f.label :current_password, :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :current_password %>
+            <div class="muted">Needed to confirm changes</div>
+          </div>
+        </div>
       <% end %>
+
+      <div class="control-group">
+        <%= f.label :password, :class => "control-label" %>
+        <div class="controls">
+          <%= f.password_field :password %>
+          <% if controller.action_name == "edit" %>
+            <div class="muted">Leave blank unless changing your password</div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :password_confirmation, 'Confirm Password', :class => "control-label" %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </div>
+    </div>
+    <div class="span5">
+      <%= render :partial => 'billing', :locals => { :f => f } %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :password_confirmation, 'Confirm Password', :class => "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation %>
-    </div>
-  </div>
-
-  <%= render :partial => 'billing', :locals => { :f => f } %>
-
+  <div class="row">
+    <div class="offset3">
+      <% if controller.action_name == "new" %>
+  <h4>
+    <small>You have 30 days free. You're billed $36 for the year on day 31.</small>
+  </h4>
+      <% end %>
   <div class="control-group">
     <div class="controls">
       <%= f.submit (controller.action_name == "new" ? "Sign up" : "Update"), :class => "btn btn-large btn-inverse", :id => "user_submit" %>
+    </div>
+  </div>
     </div>
   </div>
 <% end %>
