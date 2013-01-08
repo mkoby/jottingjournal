@@ -59,7 +59,7 @@ class EntriesController < ApplicationController
   end
 
   def get_favorites
-    @favorites = current_user.entries.favorites
+    @favorites = current_user.entries.includes(:entry_location, :entry_photo).favorites.order('created_at DESC')
     render_layout?
   end
 
@@ -77,11 +77,11 @@ class EntriesController < ApplicationController
   private
 
   def get_entries
-    @entries = current_user.entries.order('created_at DESC')
+    @entries = current_user.entries.includes(:entry_location, :entry_photo).order('created_at DESC')
   end
 
   def get_entry
-    @entry = current_user.entries.where(:id => params[:id]).first
+    @entry = current_user.entries.includes(:entry_location, :entry_photo).where(:id => params[:id]).first
 
     unless @entry
       flash[:alert] = "Can't find the entry specified"
