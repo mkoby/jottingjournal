@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'devise'
 gem 'geocoder'
 gem 'fog', '~> 1.3.1'
