@@ -1,55 +1,32 @@
-<div class="row-fluid">
-  <div class="hero-unit span7 offset1">
+<div class="row-fluid pagination-centered">
+  <div>
     <h1>Jotting Journal</h1>
-    <h2 style="padding-left: 35px;">Your journal, everywhere.</h2>
-    <br />
-    <p>
-      It's your life. You should be able to journal it anywhere. That's what Jotting Journal is for. Where ever you are, we're there to help you record what's happening.
-    </p>
-    <p>
-      Anywhere you have a web browser, you can log into your journal, record what's going on, upload a picture, and attach your location.
-    </p>
-    <p>It's all about context. <strong>Your</strong> context.</p>
-    <br />
-    <div class="pagination-centered">
-      <h2>Try it Free for 30 Days! <small>($36/year after that)</small></h2>
-      <%= link_to 'Sign Up Now', new_user_registration_path, :class => "btn btn-large btn-block btn-inverse" %>
-    </div>
-    <div class="pagination-centered muted" style="padding-top: 12px;">
-        <strong>Don't panic</strong>. Mobile apps are in the works.
-    </div>
-    <br />
-    <div class="pagination-centered">
-      <h2>Screenshots</h2>
-      <ul class="thumbnails" id="thumbnails">
-        <li class="span4">
-        <div class="thumbnail">
-          <%= image_tag "frontpage/location_photo_buttons.png", :class => "img-polaroid", :style => "height: 187px;" %>
-          <h4>Location & Photo</h4>
-        </div>
-        </li>
-        <li class="span4">
-        <div class="thumbnail">
-          <%= image_tag "frontpage/entry_sidebar.png", :class => "img-polaroid", :style => "height: 187px;" %>
-          <h4>Entry Metadata</h4>
-        </div>
-        </li>
-        <li class="span4">
-        <div class="thumbnail">
-          <%= image_tag "frontpage/markdown_support.png", :class => "img-polaroid", :style => "height: 187px;" %>
-          <h4>Markdown Support</h4>
-        </div>
-        </li>
-      </ul>
-    </div>
+    <h2>Your journal, everywhere</h2>
   </div>
-  <div class="span3" style="padding-top: 200px;">
-    <%= form_for "user", :url => user_session_path do |f| %>
-      <h2>Sign In</h2>
-      <%= f.text_field :email, :placeholder => 'email address' %>
-      <%= f.password_field :password, :placeholder => "password" %><br />
-      <%= f.submit 'Sign in', :class => 'btn btn-inverse' %>
-      <%= link_to "Forgot password?", new_password_path('user') %>
-    <% end %>
+</div>
+<div>
+  <div class="hero-unit span10 offset1 pagination-centered" id="feature-list">
+    <p>
+    It's your life. You should be able to journal it anywhere. That's what Jotting Journal is for. Where ever you are, we're there to help you record what's happening.
+    </p>
+    <p>
+    Anywhere you have a web browser, you can log into your journal, record what's going on, upload a picture, and attach your location.
+    </p>
+    <p>Here are some of the features Jotting Journal has to offer:</p>
+    <br />
+    <div class="offset1" style="padding-top: 10px;">
+      <div class="span3">
+        <img src="/assets/frontpage/markdown-mark.png" width="128px" />
+        <h3>Markdown Support</h3>
+      </div>
+      <div class="span3 offset1">
+        <img src="/assets/frontpage/location.png" width="128px" />
+        <h3>Location Aware</h3>
+      </div>
+      <div class="span3 offset1">
+        <img src="/assets/frontpage/camera.png" width="128px" />
+        <h3>Upload Pictures</h3>
+      </div>
+    </div>
   </div>
 </div>
