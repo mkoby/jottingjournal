@@ -1,25 +1,25 @@
 <%= form_for @entry do |f| %>
-  <p><%= f.text_area :contents, :class => "span8" %></p>
-  <span class="span8 form-inline">
-    <table class="table table-condensed">
-      <tr style="border: none;">
-        <td class="span6" style="border: none;">
-          <%= f.submit "Save", :class => "btn btn-inverse" %>
-        </td>
-        <td style="border: none;">
-          <%= link_to content_tag(:i, '', :class => "icon-map-marker"), '#', :onclick => "handleLocationButton(event); return false;", :class => "btn #{@entry.has_location? ? 'btn-success' : ''}", :id => "location-button" %>
-          <%= hidden_field_tag :attach_location, @entry.has_location?.to_s %>
-          <%= hidden_field_tag :latitude, @entry.entry_location ? @entry.entry_location.latitude : nil %>
-          <%= hidden_field_tag :longitude, @entry.entry_location ? @entry.entry_location.longitude : nil %>
+  <div class="btn-toolbar">
+    <%= hidden_field_tag :attach_location, @entry.has_location?.to_s %>
+    <%= hidden_field_tag :latitude, @entry.entry_location ? @entry.entry_location.latitude : nil %>
+    <%= hidden_field_tag :longitude, @entry.entry_location ? @entry.entry_location.longitude : nil %>
+    <span class="button-group">
+      <button id="location-button" class="btn <%= @entry.has_location? ? 'btn-success' : '' %>" onclick="handleLocationButton(event); return false;">
+        <%= content_tag(:i, '', :class => "icon-map-marker") %>
+      </button>
 
-          <%= f.fields_for :entry_photo, :html => { :id => "fileupload" } do |pf| %>
-            <span class="btn fileinput-button">
-              <%= content_tag(:i, '', :class => "icon-camera") %>
-              <%= pf.file_field :photo %>
-            </span>
+      <%= f.fields_for :entry_photo, :html => { :id => "fileupload" } do |pf| %>
+        <button class="btn fileinput-button">
+          <%= content_tag(:i, '', :class => "icon-camera") do %>
+            <%= pf.file_field :photo %>
           <% end %>
-        </td>
-      </tr>
-    </table>
-  </span>
+        </button>
+      <% end %>
+    </span>
+  </div>
+  <div>
+    <%= f.text_area :contents, :class => "span10" %>
+  </div>
+
+  <%= f.submit "Save", :class => "btn btn-large btn-inverse" %>
 <% end %>

@@ -10,21 +10,17 @@
   </head>
   <body>
   <%= render :partial => "menu" %>
-    
-
-    <div class="row-fluid">
-      <div class="span5 offset4 pagination-centered" id="messages">
+    <div class="row">
+      <div class="pagination-centered" id="messages">
         <% flash.each do |key, msg| %>
           <%= display_flash(key, msg) %>
         <% end %>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-        </div>
-        <div class="span9" id="entry-space">
+    <div class="container">
+      <div class="row">
+        <div class="span10 offset1" id="entry-space">
           <%= yield %>
         </div>
      </div>

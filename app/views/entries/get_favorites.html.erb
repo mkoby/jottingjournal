@@ -1,7 +1,4 @@
-<div>
-  <% @favorites.each do |entry| %>
-    <%= render :partial => 'index_entry', :locals => { :entry => entry } %>
-    <hr>
-  <% end %>
-</div>
+<% @favorites.each do |entry| %>
+  <%= render :partial => 'index_entry', :locals => { :entry => entry } %>
+<% end %>
 

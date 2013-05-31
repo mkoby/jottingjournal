@@ -1,22 +1,14 @@
 <div id="entry-<%= entry.id %>">
-  <div class="span12">
-    <div class="span8">
-      <h2><%= link_to entry.pretty_time, entry_path(entry) %></h2>
-    </div>
-    <div class="span3">
-      <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>
-    </div>
-  </div>
-  <div class="row-fluid">
+  <h2><%= link_to entry.pretty_time, entry_path(entry) %></h2>
+  <div>
     <%- if entry.has_photo? %>
-      <div class="span2">
-        <%= image_tag entry.photo.thumb160.url, :class => "img-polaroid" %>
-      </div>
+      <%= image_tag entry.photo.thumb160.url, :class => "img-rounded pull-left", :style => 'padding-right: 5px;' %>
     <% end %>
-    <div class="span9">
-      <%= simple_format h entry.shorten_contents %>
-    </div>
+    <%= simple_format h entry.shorten_contents %>
   </div>
+  <div class="pull-right">
+    <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>
+  </div>
+  <div class="clearfix"></div>
   <hr>
-  <br />
 </div>
