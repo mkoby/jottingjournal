@@ -33,14 +33,16 @@ class Entry < ActiveRecord::Base
   end
 
   def shorten_contents(count = 512)
-    if contents.length >= count 
+    shortened = contents
+
+    if shortened.length >= count 
       shortened = contents[0, count]
       splitted = shortened.split(/\s/)
       words = splitted.length
-      splitted[0, words-1].join(" ") + ' ...'
-    else 
-      contents
+      shortened = splitted[0, words-1].join(" ") + ' ...'
     end
+    
+    shortened
   end
 
   def pretty_time

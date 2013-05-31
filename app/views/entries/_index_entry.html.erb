@@ -4,7 +4,7 @@
     <%- if entry.has_photo? %>
       <%= image_tag entry.photo.thumb160.url, :class => "img-rounded pull-left", :style => 'padding-right: 5px;' %>
     <% end %>
-    <%= simple_format h entry.shorten_contents %>
+    <%= simple_format h entry.shorten_contents.html_safe %>
   </div>
   <div class="pull-right">
     <%= render :partial => "entry-buttons", :locals => { :entry => entry } %>

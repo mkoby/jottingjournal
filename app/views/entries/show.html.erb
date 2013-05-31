@@ -1,13 +1,11 @@
-<div class="container-fluid span12">
-<div class="span9" id="entry" entry-id="<%= @entry.id %>">
-  <div>
+<div class="span12">
+  <div class="span8" id="entry" entry-id="<%= @entry.id %>">
     <h2><%= @entry.pretty_time %></h2>
+    <div id="entry-text">
+      <%= @entry.contents_as_markdown.html_safe %>
+    </div>
   </div>
-  <div id="entry-text">
-    <%= @entry.contents_as_markdown.html_safe %>
+  <div class="span3">
+    <%= render :partial => 'entry_sidebar' %>
   </div>
-</div>
-<div class="span3 pull-right">
-  <%= render :partial => 'entry_sidebar' %>
-</div>
 </div>
