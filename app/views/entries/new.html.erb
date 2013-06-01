@@ -1,5 +1,9 @@
+<div class="row pull-left">
+  <div class="span8">
+    <h2>New Entry <small>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></small></h2>
+  </div>
+</div>
 <div>
-  <h2>New Entry <small>for <%= Time.now.strftime("%a, %e %b %Y %H:%M") %></small></h2>
   <%= render :partial => 'form' %>
 </div>
 

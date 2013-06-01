@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <%= render :partial => "menu" %>
+    <%= render :partial => "menu" %>
     <div class="row">
       <div class="pagination-centered" id="messages">
         <% flash.each do |key, msg| %>
@@ -19,12 +19,10 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="span10 offset1" id="entry-space">
-          <%= yield %>
-        </div>
-     </div>
+      <div class="span10 offset1" id="entry-space">
+        <%= yield %>
+      </div>
     </div>
     <%= render :partial => "layouts/footer" %>
-    </body>
+  </body>
 </html>
